@@ -115,10 +115,122 @@ Contributions are welcome! To contribute:
 
 Problem Statement
 We would like to visualize various aspects of our pizza sales data to gain insight and understand key trends. We have indentified the following requirement for creating charts:
-1. Daily Trends for Total Orders:
-2. Monthly Trend for Total Orders:
-3. Percentage of Sales by pizza category
-4. Percentage of Sales by Pizza sales
-5. Total Pizzas Sold by Pizza Category
-6. Top 5 Best Sellers by Revenue, total quantity and total orders
-7. Bottom 5 sellers by Revenue Total Quantity and Total Orders
+
+
+
+ A. KPI(Key Performance Indicator)
+ 1. Total Revenue
+     ```sql
+    SELECT SUM(total_price) AS Total_Revenue FROM pizza_sales;
+
+ 3. Average Order Value
+    ```sql
+    SELECT (SUM(total_price) / COUNT(DISTINCT order_id)) AS Avg_order_Value FROM pizza_sales
+
+ 5. Total Pizza Sold
+     ```sql
+    SELECT SUM(quantity) AS Total_pizza_sold FROM pizza_sales
+
+    
+ 7. Total Orders
+    ```sql
+    SELECT COUNT(DISTINCT order_id) AS Total_Orders FROM pizza_sales
+    
+ 9. Pizzas Per Order
+     ```sql
+    SELECT CAST(CAST(SUM(quantity) AS DECIMAL(10,2)) / 
+    CAST(COUNT(DISTINCT order_id) AS DECIMAL(10,2)) AS DECIMAL(10,2))
+    AS Avg_Pizzas_per_order
+    FROM pizza_sales
+
+
+B. Daily Trends for Total Orders
+   ```sql
+    SELECT DATENAME(MONTH, order_date) AS Month_Name, 
+    COUNT(DISTINCT order_id) AS Total_Orders
+    FROM pizza_sales
+    GROUP BY DATENAME(MONTH, order_date);
+```
+
+C. Monthly Trends for Orders
+```sql
+    select DATENAME(MONTH, order_date) as Month_Name, COUNT(DISTINCT order_id) as Total_Orders
+    from pizza_sales
+    GROUP BY DATENAME(MONTH, order_date)Output
+```
+
+D. % of Sales by Pizza Category
+```sql
+    SELECT pizza_category, CAST(SUM(total_price) AS DECIMAL(10,2)) as total_revenue,
+    CAST(SUM(total_price) * 100 / (SELECT SUM(total_price) from pizza_sales) AS DECIMAL(10,2)) AS PCT
+    FROM pizza_sales
+    GROUP BY pizza_category
+```
+
+E. % of Sales by Pizza Size
+```sql
+    SELECT pizza_size, CAST(SUM(total_price) AS DECIMAL(10,2)) as total_revenue,
+    CAST(SUM(total_price) * 100 / (SELECT SUM(total_price) from pizza_sales) AS DECIMAL(10,2)) AS PCT
+    FROM pizza_sales
+    GROUP BY pizza_size
+    ORDER BY pizza_size
+```
+
+F. Total Pizzas Sold by Pizza Category
+```sql
+    SELECT pizza_category, SUM(quantity) as Total_Quantity_Sold
+    FROM pizza_sales
+    WHERE MONTH(order_date) = 2
+    GROUP BY pizza_category
+    ORDER BY Total_Quantity_Sold DESC
+```
+
+G. Top 5 Pizzas by Revenue
+```sql
+    SELECT Top 5 pizza_name, SUM(total_price) AS Total_Revenue
+    FROM pizza_sales
+    GROUP BY pizza_name
+    ORDER BY Total_Revenue DESC
+```
+
+H. Bottom 5 Pizzas by Revenue
+```sql
+    SELECT Top 5 pizza_name, SUM(total_price) AS Total_Revenue
+    FROM pizza_sales
+    GROUP BY pizza_name
+    ORDER BY Total_Revenue ASC
+```
+
+I. Top 5 Pizzas by Quantity
+```sql
+    SELECT Top 5 pizza_name, SUM(quantity) AS Total_Pizza_Sold
+    FROM pizza_sales
+    GROUP BY pizza_name
+    ORDER BY Total_Pizza_Sold DESC
+```
+
+
+J. Bottom 5 Pizzas by Quantity
+```sql
+    SELECT TOP 5 pizza_name, SUM(quantity) AS Total_Pizza_Sold
+    FROM pizza_sales
+    GROUP BY pizza_name
+    ORDER BY Total_Pizza_Sold ASC
+```
+
+K. Top 5 Pizzas by Total Orders
+```sql
+    SELECT Top 5 pizza_name, COUNT(DISTINCT order_id) AS Total_Orders
+    FROM pizza_sales
+    GROUP BY pizza_name
+    ORDER BY Total_Orders DESC
+```
+
+L. Bottom 5 Pizzas by Total Orders
+```sql
+    SELECT Top 5 pizza_name, COUNT(DISTINCT order_id) AS Total_Orders
+    FROM pizza_sales
+    GROUP BY pizza_name
+    ORDER BY Total_Orders ASC
+```
+
