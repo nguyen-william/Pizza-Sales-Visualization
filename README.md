@@ -111,3 +111,14 @@ Contributions are welcome! To contribute:
     Commit your Changes (git commit -m 'Add some feature')
     Push to the Branch (git push origin feature/YourFeature)
     Open a Pull Request
+
+
+Problem Statement
+We would like to visualize various aspects of our pizza sales data to gain insight and understand key trends. We have indentified the following requirement for creating charts:
+1. Daily Trends for Total Orders:
+2. Monthly Trend for Total Orders:
+3. Percentage of Sales by pizza category
+4. Percentage of Sales by Pizza sales
+5. Total Pizzas Sold by Pizza Category
+6. Top 5 Best Sellers by Revenue, total quantity and total orders
+7. Bottom 5 sellers by Revenue Total Quantity and Total Orders
