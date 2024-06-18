@@ -276,4 +276,5 @@ L. Bottom 5 Pizzas by Total Orders
 
 Dashboard
 ![Pizza Sales Power BI](https://github.com/nguyen-william/Pizza-Sales-Visualization/assets/77467480/bf996237-d1ce-4f16-9c7b-1a9bbe3707db)
+![pizza_best_and_worst_sellers](https://github.com/nguyen-william/Pizza-Sales-Visualization/assets/77467480/5ea7d599-5140-4201-a7b9-592234e34093)
 
