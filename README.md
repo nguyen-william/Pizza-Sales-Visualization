@@ -274,5 +274,10 @@ L. Bottom 5 Pizzas by Total Orders
 ![Bottom 5 Pizzas by Total Orders](https://github.com/nguyen-william/Pizza-Sales-Visualization/assets/77467480/abd06af5-0d40-431f-aa01-5f8da0ead4cf)
 
 
+Dashboards
+![Pizza Dashboard Home](https://github.com/nguyen-william/Pizza-Sales-Visualization/assets/77467480/57cc9c34-1163-442b-a7c8-156e1f6df8e0)
+
+![Pizza Dashboard Sellers](https://github.com/nguyen-william/Pizza-Sales-Visualization/assets/77467480/e2a18e43-4339-4f85-921e-336889012774)
+
 
 
